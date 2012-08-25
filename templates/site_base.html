@@ -1,0 +1,48 @@
+{% load cms_tags sekizai_tags menu_tags zinnia_tags %}
+
+{% addtoblock "css" %}<link href="{{ STATIC_URL }}/css/style.css" rel="stylesheet" type="text/css" />{% endaddtoblock %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}{% endblock %}</title>
+    
+    <!-- <link href='http://fonts.googleapis.com/css?family=Limelight|Plaster|Open+Sans|Press+Start+2P|Italiana|Stint+Ultra+Expanded' rel='stylesheet' type='text/css' /> -->
+    {% block link %}{% endblock %}
+    
+    <meta charset="utf-8" />
+    {% block meta %}{% endblock %}
+
+    {% render_block "css" %}
+</head>
+
+<body>
+    <div id="container">
+        <header id="site-header">
+            <div id="site-title">hallgeir.org</div>
+            <div id="site-subtitle">Home of the large, the small and the ones in between (and the squirrels!)</div>
+            <nav id="site-nav">
+                <ul class="site-menu">
+                    {% show_menu 0 0 100 100  %}
+                </ul>
+            </nav>
+            <ul class="site-sub-menu">
+                {% show_sub_menu 3  %}
+
+            </ul>
+        </header>
+        
+        {% cms_toolbar %}
+
+        <div id="sidebar">{% block sidebar %}No sidebar.{% endblock %}</div>
+        <div id="main">
+            {% block main %}No content.{% endblock %}
+        </div>
+
+        <footer id="site-footer">
+        This site is built on Django, Django CMS and the Zinnia blog platform.
+        </footer>
+    </div>
+    {% render_block "js" %}
+</body>
+</html>

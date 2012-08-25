@@ -1,0 +1,330 @@
+@import "partials/base";
+@import "compass/css3";
+
+$sidebar-width: 17em;
+$sidebar-padding: 1em;
+$footer-height: 1em;
+$title-fontsize: 3.5em;
+$nav-height: 2em;
+$content-padding: 2em;
+
+//Theme
+$base-color: #88f;
+$sidebar-header-background: darken($base-color, 5%);
+$input-border-color: $base-color + #110;
+$color-lightest: $base-color + #220;
+$color-darker: $base-color - #110;
+$link-color: $base-color - #550;
+$link-visited-color: darken(adjust-hue($link-color, 25deg), 10%);
+$title-color: #aaf; //saturate($base-color,5%);
+$nav-border-color: $base-color - #110;
+$nav-base-color: adjust-hue($base-color, 10deg);
+$nav-top-color: $nav-base-color;
+$nav-bottom-color: $nav-top-color + #110;
+
+@font-face {
+    font-family: "Red Circle";
+    src: url(../fonts/redcircl.ttf) format("truetype");
+}
+@font-face {
+    font-family: "Featured Item";
+    src: url("../fonts/FeaturedItem.ttf")
+}
+
+br {
+    display: none;
+}
+
+a {
+    color: $link-color;
+}
+
+a:visited {
+    color: $link-visited-color;
+}
+
+address {
+    display: inline;
+}
+
+body {
+    background-color: #ccc;
+    @include background-image(linear-gradient(45deg, #eef 25%, #ddf 25%, #ddf 50%, #eef 50%, #eef 75%, #ddf 75%));
+    background-size: 8px 8px;
+    line-height: 1.5em;
+    //font-size: 150%;
+    font-size: 75%;
+    font-family: arial;
+}
+
+ul {
+    list-style-type: disc;
+}
+
+ol {
+    list-style-type: decimal;
+}
+
+li {
+    margin-left: 2em;
+}
+
+p {
+    margin-bottom: 0.5em;
+}
+
+
+
+#searchbox {
+//    width: 10em;
+}
+
+#container {
+    max-width: 70em;
+    background-color: #fff;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    box-shadow: 0em 0em 1em #000;
+}
+
+#site-header {
+    position:relative;
+}
+
+#site-title {
+    font-size: 4em;
+    padding: 1.0em 0.4em 1.5em 0.4em;
+    margin-left: 0.4em;
+    margin-right: 0.5em;
+
+    font-weight: bolder;
+
+    background-image: url(../img/header.svg);//, url(../img/Marvin_by_Twoface1077_whitebg.jpg);
+    background-repeat: no-repeat, no-repeat;
+    background-position: 0.35em 1.8em, bottom right ;
+    background-size: 4em, 1.5em;
+
+    color: $title-color;
+    //text-transform: uppercase;
+}
+
+#site-subtitle {
+    font-size: 1em;
+    font-weight: bolder;
+    display: none;
+    //color: #bbf;
+    text-transform: italic;
+    position:absolute;
+    bottom: 2.0em;
+    left: 3em;
+    white-space: nowrap;
+}
+
+
+#main {
+    margin-right: $sidebar-width + $sidebar-padding*2 + 1em;
+    text-align: justify;
+    //padding: $content-padding;
+    padding: 3em 1em 1em 3em;
+    h1 {
+        font-size: 1.8em;
+        //margin-bottom: 0.3em;
+        a {
+            text-decoration: none;
+            color: black;
+        }
+    }
+    h2 {
+        font-size: 1.5em;
+    }
+    
+    h3 {
+        font-weight: bold;
+    }
+    article {
+        margin-bottom: 3em;
+    }
+    .entry-metadata {
+        font-style: italic;
+        margin-bottom: 0.5em;
+    }
+}
+
+#site-nav {
+    border-top: 1px solid $nav-border-color;
+    border-bottom: 1px solid $nav-border-color;
+    background-color: white;
+    position: relative;
+    li 
+    {
+        border-right: 1px solid #ccc;
+        padding: 0;
+        margin: 0;
+        display:inline-block;
+    @include background-image(linear-gradient(center top, $nav-top-color, $nav-bottom-color)); 
+    }
+
+    ul {
+        list-style-type: none;
+        border-left: 1px solid #ccc;
+        margin: 0 0 0 3em;
+    }
+
+    a {
+        padding: 0.1em 2em 0.1em 2em;
+        margin:0;
+        text-decoration: none;
+        display: block;
+        text-align: center;
+        text-shadow: 0 0 5px #555;
+    }
+
+    a:visited {
+        color: white;
+        text-shadow: 2px 2px #000;
+    }
+    
+    a:hover 
+    {
+        @include background-image(linear-gradient(center top, #ddd, #eee, #ddd)); 
+    }
+
+    a.selected, a:hover.selected
+    {
+        @include background-image(linear-gradient(center top, #ddd, #bbb, #ddd)); 
+    }
+}
+
+
+#site-footer {
+    font-style: italic;
+    margin-top: 1em;
+    padding: 0.3em $content-padding 0.3em $content-padding;
+    border-top: 1px solid $color-lightest;
+    clear: both;
+    font-size: 0.8em;
+}
+
+#sidebar {
+    float:right;
+    width: $sidebar-width;
+    margin-bottom: 1em;
+    margin-top: 1em;
+    ul {
+        margin-right: 2em;
+    }
+    li {
+        list-style-type: none;
+        margin-left: 0.8em;
+        padding: 0;
+    }
+    h1 {
+        margin-top: 2em;
+        margin-bottom: 0.5em;
+        //background-color: $sidebar-header-background;
+        border-bottom: 0.3em solid $sidebar-header-background;
+        padding: 0.1em 0.5em 0.1em 0.5em;
+        font-weight: bold;
+        text-transform: uppercase;
+        color: #aaa;
+    }
+    input {
+        background-color: white;
+        border: 0.1em solid $input-border-color;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    a:visited {
+        color: $link-color;
+    }
+}
+
+#comments {
+    margin-top: 2em;
+    h1 {
+        font-size: 1.2em;
+    }
+    li {
+        img {
+            float: left;
+            width: 4em;
+        }
+        list-style: none;
+        p {
+            margin-left: 5em;
+        }
+    }
+}
+
+.comment {
+    margin-bottom: 1em;
+}
+
+#comment-form
+{
+    margin-top: 2em;
+    legend {
+        font-size: 1.2em;
+    }
+
+    label {
+        display: block;
+        //width: 8em;
+        //float: left;
+    }
+    input[type="text"]{
+        border: 1px solid $input-border-color;
+    }
+    input[type="submit"] {
+        //background-color: $base-color;
+        background-color: white;
+        border: 1px solid $input-border-color;
+    }
+    textarea {
+        border: 1px solid #999;
+        width: 100%;
+    }
+}
+
+#widget-categories {
+    a {
+        width: 8em;
+        float: left;
+    }
+}
+
+.tags {
+    li {
+        display: inline;
+        padding: 0; margin: 0;
+    }
+
+    .tag-1 { font-size: 0.7em; font-weight: 100; }
+    .tag-2 { font-size: 0.8em; font-weight: 200; }
+    .tag-3 { font-size: 0.9em; font-weight: 300; }
+    .tag-4 { font-size: 1.0em; font-weight: 400; }
+    .tag-5 { font-size: 1.2em; font-weight: 500; }
+    .tag-6 { font-size: 1.4em; font-weight: 600; }
+}
+
+.paginator {
+    li {
+        list-style: none;
+        display: inline-block;
+
+        margin: 0;
+        padding: 0;
+
+
+        .page {
+        }
+    }
+    .index {
+        color: $base-color;
+        margin-right: 1em;
+    }
+}
